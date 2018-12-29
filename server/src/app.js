@@ -1,9 +1,8 @@
 const fastify = require('fastify')({logger: true})
 const httpStatus = require('http-status')
 
-fastify.get('/', function (req, rep) {
-  rep.status(httpStatus.OK).send({ hello: 'world' })
-})
+
+fastify.register(require('./routes/status'))
 
 fastify.listen(3000, (err, address) => {
   if (err) {
