@@ -1,28 +1,26 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import './App.css'
+import { ThemeProvider } from 'styled-components'
+import { theme } from './constants/theme'
+import { Main } from './constants/styled-components'
 
 class App extends Component {
-  render() {
+  render () {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+      <React.Fragment>
+        <ThemeProvider theme={() => theme}>
+          <Main className='container-fluid'>
+            {this.props.children}
+          </Main>
+        </ThemeProvider>
+      </React.Fragment>
+    )
   }
 }
 
-export default App;
+App.propTypes = {
+  children: PropTypes.object.isRequired
+}
+
+export default App
