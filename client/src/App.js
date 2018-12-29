@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import './App.css'
 import { ThemeProvider } from 'styled-components'
 import { theme } from './constants/theme'
 import { Main } from './constants/styled-components'
+import InputComponent from './Components/InputPanel/InputComponent'
+import FilteringPanelComponent from './Components/FilteringPanel/FilteringPanelComponent'
+import OutputComponent from './Components/OutputPanel/OutputComponent'
 
 class App extends Component {
   render () {
@@ -11,16 +13,14 @@ class App extends Component {
       <React.Fragment>
         <ThemeProvider theme={() => theme}>
           <Main className='container-fluid'>
-            {this.props.children}
+            <InputComponent/>
+            <FilteringPanelComponent/>
+            <OutputComponent/>
           </Main>
         </ThemeProvider>
       </React.Fragment>
     )
   }
-}
-
-App.propTypes = {
-  children: PropTypes.object.isRequired
 }
 
 export default App
